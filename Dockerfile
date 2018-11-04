@@ -31,7 +31,7 @@ ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
     PATH=/usr/local/cargo/bin:$PATH
 
-ENV HOME=/volume
+ENV HOME=/workspace
 WORKDIR ${HOME}
 
 # Install the rust toolchain _after_ packages so that installing a nightly
@@ -46,8 +46,9 @@ RUN cargo install cargo-kcov
 # volume when using `--volume $(PWD):/volume` is used.
 ENV CARGO_HOME ${HOME}/.cargo
 
+
 # Overwrite original image's entrypoint
 ENTRYPOINT ["/bin/sh", "-c"]
 # CMD ["/bin/bash"]
-CMD ["/usr/local/cargo/bin/cargo-kcov kcov -v"]
+CMD ["/usr/local/cargo/bin/cargo-kcov kcov -v --coveralls"]
 

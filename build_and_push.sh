@@ -2,7 +2,7 @@
 
 set -e
 
-image_name="elmtai/docker-rust-kcov"
+image_name="thesnowmancometh/docker-rust-kcov"
 rust_toolchain="`grep RUST_TOOLCHAIN= Dockerfile | sed "s|.*RUST_TOOLCHAIN=\(.*\)|\1|g"`"
 from_kcov_version="`grep "^FROM " Dockerfile | sed "s|.*:\(.*\)|\1|g"`"
 
